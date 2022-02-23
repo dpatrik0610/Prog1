@@ -1,3 +1,20 @@
 Introduction to git
 ~~~~~~~~~~~~~~~~~~~
 Yay.
+
+ssh a githubon
+
+more .ssh/idxyz.pub
+ssh-add ~/.ssh/id_xyz
+git clone 'github ssh link'
+
+git config user.name "username"
+git config user.email "email"
+
+
+git add filenev
+git commit filenev -m "szoveg"
+git push
+
+
+git diff //kiirja mi változott
