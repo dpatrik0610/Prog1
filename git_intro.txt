@@ -1,20 +1,31 @@
 Introduction to git
 ~~~~~~~~~~~~~~~~~~~
+
+Create an SSH key.
+(SSH keygen on github.)
+
+Linux Commands:
+    more .ssh/idxyz.pub
+//Add SSH to github at settings/sshkeygen stuff
+    ssh-add ~/.ssh/id_xyz
+    git clone 'github ssh link'
+Add user: 
+
+    git config user.name "username"
+    git config user.email "email"
+
+Upload a file:
+    git add filename
+    git commit filename -m "szoveg"
+    git push
+
+See what is changed:
+    git diff
+
+Remove Files: 
+    git rm filename
+
+Get current/up to date repo:
+    git pull
+
 Yay.
-
-ssh a githubon
-
-more .ssh/idxyz.pub
-ssh-add ~/.ssh/id_xyz
-git clone 'github ssh link'
-
-git config user.name "username"
-git config user.email "email"
-
-
-git add filenev
-git commit filenev -m "szoveg"
-git push
-
-
-git diff //kiirja mi változott
