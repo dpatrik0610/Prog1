@@ -1,31 +1,41 @@
-Introduction to git
+Introduction to git (Linux/Ubuntu Terminal Commands)
 ~~~~~~~~~~~~~~~~~~~
+Configure your repository. Need only once.
 
-Create an SSH key.
-(SSH keygen on github.)
+1. Login to GitHub.
+2. Generate SSH keys:
+    (readings: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+    a. Open a terminal.
+    b. Execute: ssh-keygen -t ed25519 -C "your_email@example.com"
+    c. Upload a public key to GitHub (https://github.com/settings/keys)
+    d. Add an SSH key to ssh-agent: ssh-add ~/.ssh/id_ed25519
+3. Clone your repository (green 'code' button, select SSH, copy link):
+    a. git clone git@github.com:user/repositoryname.git
+4. Configure your git local repository:
+    a. git config user.name "username"
+    b. git config user.email "email"
 
-Linux Commands:
-    more .ssh/idxyz.pub
-//Add SSH to github at settings/sshkeygen stuff
-    ssh-add ~/.ssh/id_xyz
-    git clone 'github ssh link'
-Add user: 
+Usage:
 
-    git config user.name "username"
-    git config user.email "email"
+Create new file.
+    a. gedit intro_git.txt &
+    b. git status
+    c. git add intro_git.txt
+    d. git commit intro_git.txt -m "Upload git intro file"
+    e. git push
 
-Upload a file:
-    git add filename
-    git commit filename -m "szoveg"
-    git push
+Edit file.
+    a. gedit intro_git.txt &
+    b. git diff
+    c. git commit intro_git.txt -m "Update git intro file"
+    d. git push
 
-See what is changed:
-    git diff
+Remove file.
+    a. git rm intro_git.txt
+    b. git commit intro_git.txt -m "Remove git intro file"
+    c. git push
 
-Remove Files: 
-    git rm filename
-
-Get current/up to date repo:
-    git pull
-
+Never forget to update local repository.
+    a. git pull
+    
 Yay.
