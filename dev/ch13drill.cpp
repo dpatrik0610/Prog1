@@ -4,30 +4,42 @@ g++ ch13drill.cpp ../gui/Graph.cpp ../gui/Window.cpp ../gui/GUI.cpp ../gui/Simpl
 #include "../gui/Simple_window.h"
 #include "../gui/Graph.h"
 
-
-struct Grid {
-    int cellWidth = 100, 
-        gridWidth = 8 * cellWidth,
-        cellHeight = 100,
-        gridHeight = 8 * cellHeight,
-        scale = 800;
+class Grid {
+public: // We have to acces the cell's width and height later as well as the whole grid (to attach)
+    int cellWidth, cellHeight; // Width and Height of each cell.
+    int scale;  // Whole scale of the grid.
     Lines grid;
-};
 
-Grid myGrid; // This has to be declared here (globally), because the createGrid() method can't see it otherwise.
-void createGrid( int cellWidth, int cellHeight, int grid_width, int grid_height, int scale){
-    for ( int x = cellWidth; x <= scale; x += cellWidth)
-        myGrid.grid.add(Point{x,0},Point{x,grid_height});
-    for ( int y = cellHeight; y <= scale; y += cellHeight)
-        myGrid.grid.add(Point{0,y},Point{grid_width,y});
-}
+    Grid(int _cellWidth, int _cellHeight, int _rate) { // Set local variable values to given parameters.
+        cellWidth = _cellWidth;
+        cellHeight = _cellHeight;
+        if (cellWidth == cellHeight)
+        {
+            scale = _rate * cellWidth; // It doesn't matter if its times cellWidth or cellHeight, because they are equal.
+        }
+        else error("Not equal sides.");
+        int gridWidth = cellWidth * 8;
+        int gridHeight = cellHeight * 8;
+
+        createGrid(cellWidth, cellHeight, gridWidth, gridHeight, scale);
+    }
+private:
+    void createGrid( int cellWidth, int cellHeight, int grid_width, int grid_height, int scale){
+        for ( int x = cellWidth; x <= scale; x += cellWidth)
+            grid.add(Point{x,0},Point{x,grid_height});
+        for ( int y = cellHeight; y <= scale; y += cellHeight)
+            grid.add(Point{0,y},Point{grid_width,y});
+    }
+};
 
 int main()
 {
     const int window_width = 800, window_height = 1000;
     Simple_window win {Point{100,100},window_width,window_height,"Simple Window."};
 
-    createGrid(myGrid.cellWidth, myGrid.cellHeight, myGrid.gridWidth, myGrid.gridHeight, myGrid.scale);
+    // Creating an 8 by 8 rate Grid of 100x100 squares.
+    Grid myGrid(100, 100, 8);
+
     // Rectangle position
     int rect_xpos = 100;
     int rect_ypos = 100;
