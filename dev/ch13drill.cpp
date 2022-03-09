@@ -18,8 +18,8 @@ public: // We have to acces the cell's width and height later as well as the who
             scale = _rate * cellWidth; // It doesn't matter if its times cellWidth or cellHeight, because they are equal.
         }
         else error("Not equal sides.");
-        int gridWidth = cellWidth * 8;
-        int gridHeight = cellHeight * 8;
+        int gridWidth = cellWidth * _rate;
+        int gridHeight = cellHeight * _rate;
 
         createGrid(cellWidth, cellHeight, gridWidth, gridHeight, scale);
     }
