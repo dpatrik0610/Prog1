@@ -1,8 +1,8 @@
 /*
-g++ ch13drill.cpp ../gui/Graph.cpp ../gui/Window.cpp ../gui/GUI.cpp ../gui/Simple_window.cpp  -o ../builds/ch13 `fltk-config --ldflags --use-images`
+g++ ch13drill.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp  -o ../../builds/ch13 `fltk-config --ldflags --use-images`
 */
-#include "../gui/Simple_window.h"
-#include "../gui/Graph.h"
+#include "../../gui/Simple_window.h"
+#include "../../gui/Graph.h"
 
 class Grid {
 public: // We have to acces the cell's width and height later as well as the whole grid (to attach)

@@ -1,7 +1,7 @@
-#include "../gui/Simple_window.h"
-#include "../gui/Graph.h"
+#include "../../gui/Simple_window.h"
+#include "../../gui/Graph.h"
 
-// g++ ch12drill.cpp ../gui/Graph.cpp ../gui/Window.cpp ../gui/GUI.cpp ../gui/Simple_window.cpp  -o ../builds/ch12 `fltk-config --ldflags --use-images`
+// g++ ch12drill.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp  -o ../../builds/ch12 `fltk-config --ldflags --use-images`
 using namespace Graph_lib;
 
 int main() {
