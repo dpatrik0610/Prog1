@@ -110,5 +110,5 @@ int main(){
 	cout << "S<vector<int>> : (format: {val, val, val})";
 	vector <int> vi2;
 	read_val(vi2);
-	S<vector<int>> svi2 {v}
+	//S<vector<int>> svi2 {v}
 };
