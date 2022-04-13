@@ -3,9 +3,8 @@
 #include <vector>
 
 using namespace std;
-template <typename T>
-struct S {
-	S (T vv = 0) : val{vv}{}
+template <typename T> struct S {
+	S (T _val = 0) : val{_val}{}
 	T& get();
 	void set (T new_t) {val = new_t;}
 	void operator=(const T& s);
@@ -36,7 +35,7 @@ void read_val(T& v){
 }
 
 template<typename T>
-std::ostream& operator<< (ostream& os, vector<T> &v){
+ostream& operator<< (ostream& os, vector<T> &v){
 	os << "{ ";
 	for (int i = 0; i < v.size(); ++i)
 	{
@@ -47,7 +46,7 @@ std::ostream& operator<< (ostream& os, vector<T> &v){
 }
 
 template<typename T>
-std::istream& operator>> (istream& is, vector<T> &v){
+istream& operator>> (istream& is, vector<T> &v){
 	char ch = 0;
 	is >> ch;
 	if ( ch != '{'){
@@ -69,15 +68,14 @@ int main(){
 	S<int> si {37};
 	S<char> sc {'c'};
 	S<double> sd {3.2};
-	S<std::string> ss {"Hello"};
-	S<std::vector<int>> svi {std::vector<int>{1, 1, 2, 3, 5, 8}};
+	S<string> ss {"Hello"};
+	S<vector<int>> svi {vector<int>{1, 1, 2, 3, 5, 8}};
 
 	cout << "S<int> : " << s.get() << endl
 		 << "S<int> : " << si.get() << endl
 		 << "S<char> : " << sc.get() << endl
 		 << "S<double> : " << sd.get() << endl
 		 << "S<string> : " << ss.get() << endl;
-		 //<< "S<vector> : " << svi.val << endl;
 
 	cout << "S<vector> : ";
 	for (auto& a: svi.get()){
