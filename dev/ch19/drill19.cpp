@@ -3,112 +3,78 @@
 #include <vector>
 
 using namespace std;
-template <typename T>
+
+template<typename T>
 struct S {
-	S (T vv = 0) : val{vv}{}
-	T& get();
-	void set (T new_t) {val = new_t;}
-	void operator=(const T& s);
-	const T& get() const;
+    // Constructor: giving the val's value the input, but if there is no input, it's gonna be 0.
+    S (T _input = 0) : val{_input}{}
+    T& get();
+    const T& get() const;
+    void set(T _other){val = _other;};
+    void operator=(const T& value);
 
 private:
-	T val;
+    // T is a custom data type with any value (val).
+    T val;
 };
 
-template<typename T>
-T& S<T>::get(){
-	return val;
+// Reaching the get function of the custom typed struct "S".
+template<typename type>
+type& S<type>::get(){
+    return val;
 }
 
-template<typename T>
-const T& S<T>::get() const{
-	return val;
+// Making the "=" operator useable for custom typed Struct when giving value for "val".
+template<typename type>
+void S<type>::operator=(const type& _value){
+    val = _value;
 }
 
-template<typename T>
-void S<T>::operator=(const T& s){
-	val = s;
+template<typename type>
+type& read_val(type& v){
+    std::cin >> v;
+    return v;
 }
 
-template<typename T>
-void read_val(T& v){
-	cin >> v;
+void writeOut(S<int>& mi, S<char>& mc, S<double>& md, S<string>& ms){
+    cout << "S<int> : " << mi.get() << endl
+        << "S<char> : " << mc.get() << endl
+        << "S<double> : " << md.get() << endl
+        << "S<string> : " << ms.get() << endl;
 }
 
-template<typename T>
-std::ostream& operator<< (ostream& os, vector<T> &v){
-	os << "{ ";
-	for (int i = 0; i < v.size(); ++i)
-	{
-		os << v[i] << (i < v.size()-1 ? ", ": " ");
-	}
-	os << "}\n";
-	return os;
-}
+int main() {
+    // 3. Define and initialize struct with int, char, double, string, and a vector<int>
+    S<int> myInt {17};
+    S<char> myChar {'c'};
+    S<double> myDouble {7.49};
+    S<string> myString {"Little fox bounces."};
+    S<vector<int>> myVec {vector<int> {0, 1, 2, 3, 4, 5}};
 
-template<typename T>
-std::istream& operator>> (istream& is, vector<T> &v){
-	char ch = 0;
-	is >> ch;
-	if ( ch != '{'){
-		is.unget();
-		return is;
-	}
-	for (T val; is >> val;) {
-		v.push_back(val);
-		is >> ch;
-		if (ch != ',') break;
-	}
-
-	return is;
-}
-
-int main(){
-
-	S<int> s;
-	S<int> si {37};
-	S<char> sc {'c'};
-	S<double> sd {3.2};
-	S<std::string> ss {"Hello"};
-	S<std::vector<int>> svi {std::vector<int>{1, 1, 2, 3, 5, 8}};
-
-	cout << "S<int> : " << s.get() << endl
-		 << "S<int> : " << si.get() << endl
-		 << "S<char> : " << sc.get() << endl
-		 << "S<double> : " << sd.get() << endl
-		 << "S<string> : " << ss.get() << endl;
-		 //<< "S<vector> : " << svi.val << endl;
-
-	cout << "S<vector> : ";
-	for (auto& a: svi.get()){
+    writeOut(myInt, myChar, myDouble, myString); // custom writeout method for future usage.
+    cout << "S<vector> : ";
+	for (auto& a: myVec.get()){
 		cout << a << ' ';
 	}
 	cout << endl;
 
-	sc.set('s');
-	cout << "S<char> : " << sc.get() << endl;
+    // Giving new values to each variables.
+    // Using the "=" custom operator for my variables and the read_val for reading from input field.
+    int i = 0;
+    cout << "Please give an int: ";
+    myInt = (read_val(i)); cout << endl;
 
-	sd = 42.1;
-	cout << "S<double> : " << sd.get() << endl;
+    char c = 'e';
+    cout << "Please give a char: ";
+    myChar = (read_val(c)); cout << endl;
 
-	int ii;
-	read_val(ii);
-	S<int> si2 {ii};
+    double d = 0.1;
+    cout << "Please give a double: ";
+    myDouble = (read_val(d)); cout << endl;
 
-	double dd;
-	read_val(dd);
-	S<double> sd2 {dd};
+    string s = "Default String.";
+    cout << "Please give a string: ";
+    myString = (read_val(s)); cout << endl;
 
-	string ss2;
-	read_val(ss2);
-	S<string> str {ss2};
-
-	cout << "S<int> : " << si2.get() << endl;
-	cout << "S<double> : " << sd2.get() << endl;
-	cout << "S<string> : " << str.get() << endl;
-
-	cout << "S<vector<int>> : (format: {val, val, val})";
-	vector <int> vi2;
-	read_val(vi2);
-	S<vector<int>> svi2 {v}
-};
+    writeOut(myInt, myChar, myDouble, myString);
+}
