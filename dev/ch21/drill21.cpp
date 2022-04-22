@@ -4,6 +4,9 @@
 #include <list>
 #include <algorithm>
 
+//g++ ./dev/ch21/drill21.cpp -o ./builds/ch21
+//./builds/ch21 < ./dev/ch21/data.txt
+
 using namespace std;
 
 struct Item {
@@ -110,9 +113,40 @@ try{
             [](const Item& item) {return item.iid == 9988 || item.iid == 7;}), // Lambda to make an item iid as 9988 and 7 (Canon.. and Papaya)
         vi.end() // End of the iterator (and the vector.)
     );
+    cout << "Reduced Data:" << endl;
     printOut(vi);
 
-    return 0;
+    // Repeat with list:
+    list<Item> li;
+    for (auto& item : vi){
+        li.push_back(item);
+    }
+    cout << "List Data:" << endl;
+    printOut(li);
+
+    li.sort([](const Item& a, const Item& b) { return a.name < b.name; });
+    li.sort([](const Item& a, const Item& b) { return a.iid < b.iid; });
+    li.sort([](const Item& a, const Item& b) { return a.value > b.value; });
+
+    li.push_back(Item{"horse shoe", 99, 12.34});
+    li.push_back(Item{"Canon S400", 9988, 499.95});
+
+    li.erase(
+        remove_if(
+            li.begin(),
+            li.end(),
+            [](const Item& item) { return item.name == "Apple" || item.name == "Orange"; }),
+        li.end()
+    );
+
+    li.erase(
+        remove_if(
+            li.begin(),
+            li.end(),
+            [](const Item& item) { return item.iid == 8 || item.iid == 9; }),
+        li.end()
+    );
+
 }catch(exception& e) {
     cout << "Exception: " << e.what() << endl;
 }
