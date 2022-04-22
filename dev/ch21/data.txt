@@ -1,10 +1,10 @@
 Apple 0 130
-Banana 1 51
+Banana 5 51
 Avocado 2 1
-Lime 3 22
+Lime 9 22
 Orange 4 175
-Grape 5 221
-Papaya 6 11
-Pineapple 7 41
+Grape 1 221
+Papaya 7 11
+Pineapple 6 41
 Cononut 8 61
-Blackberry 9 97
+Blueberry 3 97
