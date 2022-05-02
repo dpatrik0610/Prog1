@@ -20,6 +20,8 @@ public:
         for (int i = 0; i < 13; i++)
         {
             // Search the name to find any invalid string.
+            // If any name contains an invalid character, the iterator's position will point to that char
+            // meaning its not equal to the npos magic number. (not found number)
             if (_fname.find(invalid[i]) != string::npos || _secname.find(invalid[i]) != string::npos){
                 throw runtime_error("Invalid name.");
             }
@@ -51,11 +53,13 @@ int main() {
     cout << goofy << endl;
 
     // Creating a custom person from input.
+    cout << "Give: fname sname age" << endl;
     Person newPerson;
     cin >> newPerson;
     cout << newPerson << endl;
 
     //Get multiple persons
+    cout << "Add multiple: fname sname age" << endl;
     vector<Person> persons;
 
     for (Person person; cin >> person;) {
