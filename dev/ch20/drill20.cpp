@@ -25,9 +25,7 @@ void increment(type& _type, int val){
 }
 
 template<typename inType, typename outType> 
-// We give the input's and output's type.
 outType myCopy(inType _start, inType _end, outType _output){
-	// As an argument, we give an (inType) data type's start and end, and an (outType) output.
 	for (inType p = _start; p != _end; ++p) { // Increasing the index from the start index.
 		// We increase output first (to increase size of the output data type) and then give a value: first, the start's, after the increased one.
 		*_output++ = *p;
@@ -37,7 +35,7 @@ outType myCopy(inType _start, inType _end, outType _output){
 
 int main()
 try {
-	constexpr int size = 10;
+	const int size = 10;
 	int numbers[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 	// This copy is a std function.
