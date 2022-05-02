@@ -8,10 +8,14 @@ int main() {
         // Canvas variables
         const int window_width = 600;
         const int window_height = 400;
+
         // Axis variables
         const int scale = 10, xlen = window_width-40, ylen = window_height-40;
         const Point origo {window_width/2, window_height/2};
-        // Square variables
+
+        // Square function variables
+        // rmin/rmax : interval of the function (range of interpretation (ÉT)) 
+        // n_points: how detailed our function is / How many points we need to draw the function.
         int rmin = -11, rmax = 11;
         int n_points = 300;
 
@@ -36,6 +40,7 @@ int main() {
         win.set_label("An axis.");
         win.wait_for_button();
         // Create an f(x) = x^2 / 5; function.
+        // scale: x and y scale
         Function sq ([] (double x) {return x*x / 5;}, rmin, rmax, origo, n_points, scale, scale);
         win.attach(sq);
         win.set_label("Functions.");

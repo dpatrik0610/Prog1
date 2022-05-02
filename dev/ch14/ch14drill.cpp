@@ -76,11 +76,11 @@ int main() {
         d1.vf(); // Output: D1::vf()
         d1.f(); // Output: D1::f()
         cout << endl; 
+    // 3. We are creating a reference to the B1 class and inicializing it to d1 object.
         B1& b_reference = d1; 
-    //                          3. We are creating a reference to the B1 class and inicializing it to d1 object.
-    //                                      Since it doesn't have it's own functions, it will use B1's.
+    // Since it doesn't have it's own functions, it will use B1's.
 
-    //                                                  4. After adding D1 it's own functions: 
+    // 4. After adding D1 it's own functions: 
     b_reference.vf(); // Output: D1::vf() // Because we overrided with an own function.
     b_reference.f(); // Output: B1::f() // we don't override this function, so reference will use it's own B1 function.
 

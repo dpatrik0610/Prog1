@@ -7,7 +7,7 @@ g++ ch13drill.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../
 class Grid {
 public: // We have to acces the cell's width and height later as well as the whole grid (to attach)
     int cellWidth, cellHeight; // Width and Height of each cell.
-    int scale;  // Whole scale of the grid.
+    int gridSize;  // Whole size of the grid.
     Lines grid;
 
     Grid(int _cellWidth, int _cellHeight, int _rate) { // Set local variable values to given parameters.
@@ -15,20 +15,21 @@ public: // We have to acces the cell's width and height later as well as the who
         cellHeight = _cellHeight;
         if (cellWidth == cellHeight)
         {
-            scale = _rate * cellWidth; // It doesn't matter if its times cellWidth or cellHeight, because they are equal.
+            gridSize = _rate * cellWidth; // It doesn't matter if its times cellWidth or cellHeight, because they are equal.
         }
         else error("Not equal sides.");
-        int gridWidth = cellWidth * _rate;
-        int gridHeight = cellHeight * _rate;
 
-        createGrid(cellWidth, cellHeight, gridWidth, gridHeight, scale);
+        createGrid(cellWidth, cellHeight, gridSize);
     }
+
 private:
-    void createGrid( int cellWidth, int cellHeight, int grid_width, int grid_height, int scale){
-        for ( int x = cellWidth; x <= scale; x += cellWidth)
-            grid.add(Point{x,0},Point{x,grid_height});
-        for ( int y = cellHeight; y <= scale; y += cellHeight)
-            grid.add(Point{0,y},Point{grid_width,y});
+    // both with x and y we loop through the cells until its reaches the grid's max size. 
+    // We iterate by adding a cell's size to out current position and adding a new point to the line. 
+    void createGrid(int cellWidth, int cellHeight, int gridSize){
+        for ( int x = cellWidth; x <= gridSize; x += cellWidth)
+            grid.add(Point{x,0},Point{x,gridSize});
+        for ( int y = cellHeight; y <= gridSize; y += cellHeight)
+            grid.add(Point{0,y},Point{gridSize,y});
     }
 };
 
