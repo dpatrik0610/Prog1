@@ -1,6 +1,6 @@
 //g++ vector_006.cpp -o vector_006 -Wall -fno-elide-constructors
 
-#include "../std_lib_facilities.h"
+#include "../../std_lib_facilities.h"
 
 class My_out_of_range{};
 
