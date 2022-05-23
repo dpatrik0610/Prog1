@@ -1,7 +1,7 @@
 #include "../../gui/Simple_window.h"
 #include "../../gui/Graph.h"
 
-//g++ ch15drill.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp  -o ../builds/ch15 `fltk-config --ldflags --use-images`
+//g++ ch15drill.cpp ../../gui/Graph.cpp ../../gui/Window.cpp ../../gui/GUI.cpp ../../gui/Simple_window.cpp  -o ../../builds/ch15 `fltk-config --ldflags --use-images`
 
 struct Canvas {
 public:
