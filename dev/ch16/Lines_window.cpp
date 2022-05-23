@@ -30,7 +30,8 @@ Lines_window::Lines_window(Point xy, int w, int h, const string& title)
     xy_out.put("no point");
 
     // Attaching colours to the colour menu.
-    colour_menu.attach(new Button(Point(0,0),0,0,"red",cb_red));
+    // red is simply a sorter version with lambda funciton. Addresses: Pointers to window and widget.
+    colour_menu.attach(new Button(Point(0,0),0,0,"red",[](Address, Address pw){reference_to<Lines_window>(pw).red_pressed();}));
     colour_menu.attach(new Button(Point(0,0),0,0,"blue",cb_blue));
     colour_menu.attach(new Button(Point(0,0),0,0,"black",cb_black));
     // Attaching to the screen, but hiding it, since its gonna be open when clicked.
