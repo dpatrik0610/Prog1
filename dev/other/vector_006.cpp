@@ -6,8 +6,11 @@ class My_out_of_range{};
 
 struct No_default {
 	No_default(int k) { a = k; }
+	No_default(int ax, int bx){ax = a; bx = b;}
 	int a = 0;
 	int b = 0;
+	No_default(const No_default&) = delete;
+	No_default& operator=(const No_default&)=delete;
 };
 
 template<typename T, typename A = allocator<T>>  // az A egy T tipusu elemeknek segít memóriát foglalni
