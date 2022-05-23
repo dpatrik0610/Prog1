@@ -210,21 +210,22 @@ My_vector<double> fill()
 
 void test_constructors()
 {
+	// Test 1:
 	My_vector<double> mv;
-	cout << mv.capacity() << endl;
+	cout << "Mv.capacity: " << mv.capacity() << endl;
 
 	for (int i = 0; i < 18; ++i)
 	{
 		mv.push_back(8.5);
 		cout << mv.capacity() << endl;
 	}
-
+	// Test 2:
 	My_vector<double> mv2 (mv);
 	
 	for(int i = 0; i < mv2.size(); ++i)
 		cout << mv2.at(i) << ' ';
 	cout << endl;
-
+	// Test 3:
 	My_vector<double> mv3 {15.2, 18.6, 120.1};
 
 	mv3 = mv;
@@ -233,12 +234,14 @@ void test_constructors()
 		cout << mv3.at(i) << ' ';
 	cout << endl;
 
+	// Test 4:
 	My_vector<double> mv4 = fill();
 
 	for(int i = 0; i < mv4.size(); ++i)
 		cout << mv4.at(i) << ' ';
 	cout << endl;
 
+	// Test 5:
 	My_vector<double> mv5 {15.2, 18.6, 120.1};
 
 	mv5 = fill();
@@ -247,6 +250,7 @@ void test_constructors()
 		cout << mv5.at(i) << ' ';
 	cout << endl;
 
+	// Test 6:
 	My_vector<double> mv6 (10);
 }
 
@@ -255,22 +259,22 @@ My_vector<double> glob(10);
 int main()
 try {
 
-	My_vector<string> smv {"Jack", "Jill", "John", "Jenny", "Béla"};
+	My_vector<string> smv {"Jack", "Jill", "Béla", "John", "Jenny"};
 
 	for(int i = 0; i < smv.size(); ++i)
 		cout << smv.at(i) << endl;
-
-	auto p = find(smv.begin(), smv.end(), "Jill");
+	cout << endl;
+	auto p = find(smv.begin(), smv.end(), "Béla");
 
 	smv.erase(p);
 
 	smv.insert(p, "Joseph");
 
-	for(const auto& e : smv)
-		cout << e << endl;
+	for(const auto& element : smv)
+		cout << element << endl;
 	
+	test_constructors();
 	return 0;
-
 } catch (exception& e) {
 	cerr << e.what() << endl;
 	return 1;
